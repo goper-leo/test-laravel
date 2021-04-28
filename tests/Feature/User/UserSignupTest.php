@@ -38,8 +38,7 @@ class UserSignupTest extends TestCase
         // Check user has `pin`
         $this->assertNotNull($signupUser->pin);
         // Check user is not verified
-        $this->assertEquals(0, $signupUser->is_verified);
-
+        $this->assertFalse($signupUser->is_verified);
         $this->assertNull(Invitation::whereEmail($invitee->email)->first());
     }
 

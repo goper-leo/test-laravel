@@ -14,6 +14,7 @@ abstract class TestCase extends BaseTestCase
     const RESPONSE_SUCCESS = 200;
     const RESPONSE_POST_SUCCESS = 201;
     const RESPONSE_ERROR = 422;
+    const RESPONSE_ERROR_FORBIDDEN = 403;
 
     const PASSWORD = 'secret';
     
@@ -39,11 +40,13 @@ abstract class TestCase extends BaseTestCase
     /**
      * Login as user
      *
+     * @param Object $user
      * @return void
      */
-    public function loginAsUser()
+    public function loginAsUser($user = null)
     {
-        $user = User::orderByRaw('RAND()')->basic()->first();
+        if (!$user)
+            $user = User::orderByRaw('RAND()')->basic()->first();
         $this->auth = $user;
         Sanctum::actingAs($user, ['*']);
     }

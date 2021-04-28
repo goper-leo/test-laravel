@@ -5,7 +5,7 @@ Hello,
 Enter code below to verify your'e account.
 <br>
 @component('mail::panel')
-{{ $user->code }}
+{{ $user->pin }}
 @endcomponent
 
 Cheers,<br>

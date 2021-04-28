@@ -36,9 +36,6 @@ class LoginRequest extends FormRequest
                     $user = User::where(['user_name' => $this->user_name])->first();
                     if (!$user || !Hash::check($value, $user->password)) {
                         $fail('These credentials do not match our records.');
-                    } else {
-                        if (!$user->is_verified)
-                            $fail('Please verify your account first, check your email.');
                     }
                 }
             ]

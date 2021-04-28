@@ -92,6 +92,15 @@ class User extends Authenticatable
     }
 
     /**
+     * Is verified?
+     * @return boolean
+     */
+    public function getIsVerifiedAttribute($value)
+    {
+        return boolval($value);
+    }
+
+    /**
      * Get users that are admins
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
@@ -101,5 +110,29 @@ class User extends Authenticatable
     public function scopeAdmin($query)
     {
         return $query->where('user_role', self::ADMIN);
+    }
+
+    /**
+     * Get users that are verified
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     * @author goper
+     */
+    public function scopeVerified($query)
+    {
+        return $query->where('is_verified', true);
+    }
+
+    /**
+     * Get users that are not-verified
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     * @author goper
+     */
+    public function scopeUnVerified($query)
+    {
+        return $query->where('is_verified', false);
     }
 }

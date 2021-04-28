@@ -23,7 +23,6 @@ Route::namespace('Auth')->prefix('auth')->group(function () {
     Route::prefix('sign-up')->group(function () {
         Route::name('auth.sign_up')->get('{code}', 'SignUpController@index');
         Route::name('auth.sign_up.store')->post('{code}', 'SignUpController@store');
-        Route::name('auth.sign_up.verify')->post('verify', 'SignUpController@verify');
     });
 });
 
@@ -38,6 +37,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('user')->namespace('User')->group(function () {
         Route::name('user.me')->get('me', 'IndexController@index');
         Route::name('user.update')->patch('update', 'IndexController@update');
+        Route::name('user.verify')->post('verify', 'IndexController@verify');
     });
 
     /**
