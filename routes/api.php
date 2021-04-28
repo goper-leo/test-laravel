@@ -21,6 +21,7 @@ Route::namespace('Auth')->prefix('auth')->group(function () {
     Route::name('auth.login')->post('login', 'LoginController@index');
 
     Route::prefix('sign-up')->group(function () {
+        Route::name('auth.sign_up')->get('{code}', 'SignUpController@index');
         Route::name('auth.sign_up.store')->post('', 'SignUpController@store');
         Route::name('auth.sign_up.verify')->post('verify', 'SignUpController@verify');
     });
@@ -43,6 +44,6 @@ Route::middleware('auth:sanctum')->group(function () {
      * Admin routes
      */
     Route::prefix('admin')->middleware('admin')->namespace('Admin')->group(function () {
-        Route::name('admin.user.send.invitations')->post('store', 'UserController@store');
+        Route::name('admin.user.send.invitations')->post('store', 'InvitationController@store');
     });
 });

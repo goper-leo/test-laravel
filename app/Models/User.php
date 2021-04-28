@@ -42,7 +42,7 @@ class User extends Authenticatable
      * @return boolean
      * @author goper
      */
-    public function isUser()
+    public function isBasic()
     {
         return $this->user_role == self::USER;
     }
@@ -51,9 +51,9 @@ class User extends Authenticatable
      * Get is user
      * @return boolean
      */
-    public function getIsUserAttribute()
+    public function getIsBasicAttribute()
     {
-        return $this->isUser();
+        return $this->isBasic();
     }
 
     /**
@@ -63,7 +63,7 @@ class User extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Builder
      * @author goper
      */
-    public function scopeUser($query)
+    public function scopeBasic($query)
     {
         return $query->where('user_role', self::USER);
     }
