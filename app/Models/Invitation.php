@@ -14,6 +14,5 @@ class Invitation extends Model
     protected $fillable = [
         'email',
         'code',
-        'pin',
     ];
 }

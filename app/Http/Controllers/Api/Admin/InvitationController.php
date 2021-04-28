@@ -21,7 +21,6 @@ class InvitationController extends Controller
         return new InvitationResource(Invitation::create([
             'email' => $request->email,
             'code' => Str::random(100),
-            'pin' => rand(60000, 999999),
         ]));
     }
 }

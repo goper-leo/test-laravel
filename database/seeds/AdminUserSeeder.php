@@ -19,6 +19,7 @@ class AdminUserSeeder extends Seeder
             'user_name' => 'admin',
             'user_role' => 'admin',
             'registered_at' => now(),
+            'is_verified' => true,
         ]);
     }
 }

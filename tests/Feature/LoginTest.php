@@ -37,5 +37,8 @@ class LoginTest extends TestCase
         ]));
         $response
             ->assertStatus(self::RESPONSE_ERROR);
+
+        // @TODO - test user cannot login if not verified
+        
     }
 }

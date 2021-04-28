@@ -25,6 +25,8 @@ class User extends Authenticatable
         'avatar_url',
         'user_role',
         'registered_at',
+        'pin',
+        'is_verified',
     ];
 
     /**
@@ -34,6 +36,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
+        'pin',
     ];
 
     /**

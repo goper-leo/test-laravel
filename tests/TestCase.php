@@ -15,6 +15,8 @@ abstract class TestCase extends BaseTestCase
     const RESPONSE_POST_SUCCESS = 201;
     const RESPONSE_ERROR = 422;
 
+    const PASSWORD = 'secret';
+    
     /**
      * Authenticated user
      *

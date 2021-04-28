@@ -22,7 +22,7 @@ Route::namespace('Auth')->prefix('auth')->group(function () {
 
     Route::prefix('sign-up')->group(function () {
         Route::name('auth.sign_up')->get('{code}', 'SignUpController@index');
-        Route::name('auth.sign_up.store')->post('', 'SignUpController@store');
+        Route::name('auth.sign_up.store')->post('{code}', 'SignUpController@store');
         Route::name('auth.sign_up.verify')->post('verify', 'SignUpController@verify');
     });
 });
