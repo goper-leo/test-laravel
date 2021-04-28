@@ -37,4 +37,4 @@ cache_clear:
 	composer dump-autoload
 
 test:
-	./vendor/bin/phpunit ./tests/. --repeat ${times}
+	./vendor/bin/phpunit ./tests/Feature/. --repeat ${times}
