@@ -44,6 +44,6 @@ Route::middleware('auth:sanctum')->group(function () {
      * Admin routes
      */
     Route::prefix('admin')->middleware('admin')->namespace('Admin')->group(function () {
-        Route::name('admin.user.send.invitations')->post('store', 'InvitationController@store');
+        Route::name('admin.user.send.invitations')->post('user/invite/store', 'InvitationController@store');
     });
 });
