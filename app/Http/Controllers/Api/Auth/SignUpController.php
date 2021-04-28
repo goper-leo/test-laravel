@@ -32,7 +32,7 @@ class SignUpController extends Controller
         $invitation = Invitation::whereCode($request->code)->firstOrFail();
         return new UserResource(User::create([
             'email' => $invitation->email,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
             'user_name' => $request->user_name,
             'registered_at' => now(),
             'pin' => rand(60000, 999999),

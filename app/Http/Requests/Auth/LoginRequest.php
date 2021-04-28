@@ -34,6 +34,7 @@ class LoginRequest extends FormRequest
                 'required',
                 function ($attribute, $value, $fail) {
                     $user = User::where(['user_name' => $this->user_name])->first();
+                    
                     if (!$user || !Hash::check($value, $user->password)) {
                         $fail('These credentials do not match our records.');
                     }

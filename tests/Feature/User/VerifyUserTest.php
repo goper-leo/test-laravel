@@ -15,7 +15,7 @@ class VerifyUserTest extends TestCase
      */
     public function testUserCanVerifyAccount()
     {
-        $user = User::orderByRaw('RAND()')->unVerified()->first();
+        $user = User::orderByRaw('RAND()')->basic()->unVerified()->first();
         $this->loginAsUser($user);
         $response = $this->json('POST', route('user.verify'), [
             'pin' => $user->pin,
@@ -34,7 +34,7 @@ class VerifyUserTest extends TestCase
      */
     public function testUserCannotVerifyAccount()
     {
-        $user = User::orderByRaw('RAND()')->unVerified()->first();
+        $user = User::orderByRaw('RAND()')->basic()->unVerified()->first();
         $this->loginAsUser($user);
 
         // Wrong pin given

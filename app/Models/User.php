@@ -66,7 +66,7 @@ class User extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Builder
      * @author goper
      */
-    public function scopeBasic($query)
+    public static function scopeBasic($query)
     {
         return $query->where('user_role', self::USER);
     }
@@ -107,7 +107,7 @@ class User extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Builder
      * @author goper
      */
-    public function scopeAdmin($query)
+    public static function scopeAdmin($query)
     {
         return $query->where('user_role', self::ADMIN);
     }

@@ -36,7 +36,7 @@ Route::middleware('auth:sanctum')->group(function () {
      */
     Route::prefix('user')->namespace('User')->group(function () {
         Route::name('user.me')->get('me', 'IndexController@index');
-        Route::name('user.update')->patch('update', 'IndexController@update');
+        Route::name('user.update')->post('update', 'IndexController@update');
         Route::name('user.verify')->post('verify', 'IndexController@verify');
     });
 

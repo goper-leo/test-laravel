@@ -38,3 +38,6 @@ cache_clear:
 
 test:
 	./vendor/bin/phpunit ./tests/Feature/. --repeat ${times}
+
+testSpecific:
+	./vendor/bin/phpunit --filter ${class} tests/Feature/${path} --repeat ${times}

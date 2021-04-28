@@ -14,15 +14,31 @@ class LoginTest extends TestCase
      */
     public function testAdminCanLogin()
     {
-        $admin = User::where('user_role', User::ADMIN)->first();
+        $admin = User::admin()->first();
         $response = $this->json('POST', route('auth.login', [
             'user_name' => $admin->user_name,
-            'password' => 'secret',
+            'password' => self::PASSWORD,
         ]));
 
-        $data = $response->getData();
         $response
             ->assertStatus(self::RESPONSE_SUCCESS);
+    }
+
+    /**
+     * Test basic user can login
+     *
+     */
+    public function testBasicUserCanLogin()
+    {
+        $user = User::basic()->first();
+        $response = $this->json('POST', route('auth.login', [
+            'user_name' => $user->user_name,
+            'password' => self::PASSWORD,
+        ]));
+        $responseData = $response->getData()->data;
+        $response->assertStatus(self::RESPONSE_SUCCESS);
+
+        $this->assertEquals($responseData->email, $user->email);
     }
 
     /**
@@ -35,10 +51,6 @@ class LoginTest extends TestCase
             'user_name' => 'user_name-doesnotexist',
             'password' => 'secret123123123',
         ]));
-        $response
-            ->assertStatus(self::RESPONSE_ERROR);
-
-        // @TODO - test user cannot login if not verified
-        
+        $response->assertStatus(self::RESPONSE_ERROR);
     }
 }
